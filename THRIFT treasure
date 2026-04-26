@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thrift Treasure</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #0f0f0f;
+    color: white;
+}
+
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 30px;
+    background: black;
+    position: sticky;
+    top: 0;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+}
+
+/* HERO */
+.hero {
+    height: 70vh;
+    background: url('https://images.unsplash.com/photo-1521334884684-d80222895322') center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero h1 {
+    background: rgba(0,0,0,0.6);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* PRODUCTS */
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+    gap: 20px;
+    padding: 40px;
+}
+
+.product {
+    background: #1a1a1a;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.product:hover {
+    transform: scale(1.05);
+}
+
+.product img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+button {
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    background: gold;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* CART */
+.cart {
+    cursor: pointer;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: black;
+}
+
+/* WHATSAPP */
+.whatsapp {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25D366;
+    padding: 15px;
+    border-radius: 50%;
+    font-size: 20px;
+    color: white;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Thrift Treasure</div>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Shop</a>
+        <a href="#">Contact</a>
+    </nav>
+    <div class="cart">Cart (<span id="count">0</span>)</div>
+</header>
+
+<div class="hero">
+    <h1>Premium Thrifted Fashion 🔥</h1>
+</div>
+
+<section class="products">
+
+    <div class="product">
+        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab">
+        <h3>Oversized Tee</h3>
+        <p>₹499</p>
+        <button onclick="addToCart('Oversized Tee')">Add to Cart</button>
+    </div>
+
+    <div class="product">
+        <img src="https://images.unsplash.com/photo-1602810316498-ab67cf68c8e1">
+        <h3>Vintage Hoodie</h3>
+        <p>₹899</p>
+        <button onclick="addToCart('Vintage Hoodie')">Add to Cart</button>
+    </div>
+
+    <div class="product">
+        <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f">
+        <h3>Denim Jacket</h3>
+        <p>₹1199</p>
+        <button onclick="addToCart('Denim Jacket')">Add to Cart</button>
+    </div>
+
+</section>
+
+<footer>
+    <p>© 2026 Thrift Treasure | All Rights Reserved</p>
+</footer>
+
+<a class="whatsapp" id="whatsappBtn" target="_blank">💬</a>
+
+<script>
+let count = 0;
+let cartItems = [];
+
+function addToCart(product){
+    count++;
+    cartItems.push(product);
+    document.getElementById("count").innerText = count;
+    updateWhatsApp();
+}
+
+function updateWhatsApp(){
+    let message = "I want to order: " + cartItems.join(", ");
+    let url = "https://wa.me/918109322340?text=" + encodeURIComponent(message);
+    document.getElementById("whatsappBtn").href = url;
+}
+</script>
+
+</body>
+</html>
